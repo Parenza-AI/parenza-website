@@ -1,0 +1,73 @@
+---
+/**
+ * Shared top bar + bottom tab bar for the in-markup product screens.
+ *
+ * The top bar carries the workspace subject — the child's name and live age —
+ * because that is what the app puts beside the wordmark on every screen.
+ */
+interface Props {
+  tab: "Today" | "Routines" | "Knowledge" | "Team" | "More";
+  /** Subject name shown beside the wordmark. Omit for the bare wordmark. */
+  subject?: string;
+  /** Elapsed time since the subject's anchor date, in the app's own format. */
+  age?: string;
+}
+const { tab, subject, age } = Astro.props;
+const TABS = ["Today", "Routines", "Knowledge", "Team", "More"] as const;
+---
+
+<div
+  class="flex items-center justify-between border-b border-pz-night-line px-4 pb-2.5 pt-7"
+>
+  <span class="flex min-w-0 items-center gap-1.5">
+    <span class="font-heading text-sm font-semibold text-pz-night-text"
+      >Parenza</span
+    >
+    {
+      subject && (
+        <>
+          <span class="text-pz-night-mute" aria-hidden="true">
+            ·
+          </span>
+          <span
+            class="h-4 w-4 shrink-0 rounded-full bg-pz-night-line"
+            aria-hidden="true"
+          />
+          <span class="truncate text-[11px] font-medium text-pz-night-text">
+            {subject}
+          </span>
+          {age && (
+            <span class="shrink-0 rounded bg-pz-night-card px-1.5 py-0.5 text-[9px] text-pz-night-mute">
+              {age}
+            </span>
+          )}
+        </>
+      )
+    }
+  </span>
+  <span
+    class="flex shrink-0 items-center gap-1.5 text-[10px] text-pz-night-mute"
+  >
+    <span class="h-1.5 w-1.5 rounded-full bg-pz-sage" aria-hidden="true"></span>
+    Chief of Staff
+  </span>
+</div>
+
+<slot />
+
+<div
+  class="flex items-center justify-between border-t border-pz-night-line px-3 py-2.5"
+>
+  {
+    TABS.map((t) => (
+      <span
+        class:list={[
+          "text-[9px]",
+          t === tab ? "font-semibold text-pz-night-text" : "text-pz-night-mute",
+        ]}
+      >
+        {t}
+      </span>
+    ))
+  }
+</div>

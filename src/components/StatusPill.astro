@@ -1,0 +1,23 @@
+---
+import { STATUS_LABEL, type ControlStatus } from "../security-content";
+
+interface Props {
+  status: ControlStatus;
+}
+const { status } = Astro.props;
+
+/** Sage = done, clay = under way, plain = not started. Text carries the
+    meaning too — the colour is never the only signal. */
+const TONE: Record<ControlStatus, string> = {
+  "in-place": "border-pz-sage bg-pz-sage-wash text-pz-sage-strong",
+  "in-progress": "border-pz-clay bg-pz-clay-wash text-pz-clay-strong",
+  planned: "border-pz-line-strong bg-pz-sand text-pz-ink-soft",
+};
+---
+
+<span
+  class:list={[
+    "inline-flex shrink-0 items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold",
+    TONE[status],
+  ]}>{STATUS_LABEL[status]}</span
+>

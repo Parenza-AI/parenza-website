@@ -1,0 +1,130 @@
+---
+import { MCP_POINTS } from "../data";
+---
+
+<section
+  id="mcp"
+  class="border-y border-pz-line bg-pz-sand px-6 py-20 lg:py-28"
+>
+  <div class="mx-auto max-w-6xl">
+    <div class="grid gap-14 lg:grid-cols-[1fr_0.85fr] lg:gap-20">
+      <div>
+        <p
+          class="text-xs font-semibold uppercase tracking-[0.2em] text-pz-clay-strong"
+        >
+          In your own AI
+        </p>
+        <h2
+          class="mt-4 font-heading text-3xl font-semibold leading-tight md:text-4xl"
+        >
+          Give the assistant you already use a permanent briefing on your family.
+        </h2>
+        <p class="mt-5 text-lg leading-relaxed text-pz-ink-soft">
+          Most people who'd get value from Parenza already have an AI assistant
+          open all day. Rather than asking you to move, Parenza plugs into it.
+          Ask Claude or ChatGPT a question about your child and it can consult
+          your family's actual record — and the same specialist panel — before it
+          answers.
+        </p>
+
+        <dl class="mt-10 space-y-7">
+          {
+            MCP_POINTS.map((point) => (
+              <div class="border-t border-pz-line-strong pt-5">
+                <dt class="font-heading text-lg font-semibold text-pz-ink">
+                  {point.title}
+                </dt>
+                <dd class="mt-2 text-base leading-relaxed text-pz-ink-soft">
+                  {point.body}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+
+        <p class="mt-8 text-sm leading-relaxed text-pz-ink-mute">
+          The mechanism is MCP — an open standard for connecting an AI assistant
+          to a source of data. You don't need to know that to use it: you copy an
+          address, and your assistant handles the rest. What it means for your
+          data is spelled out on the{" "}
+          <a
+            href="/trust"
+            class="text-pz-clay-strong underline underline-offset-2"
+            >Trust &amp; Security</a
+          >{" "}page.
+        </p>
+      </div>
+
+      <div class="lg:pt-16">
+        <div
+          class="overflow-hidden rounded-2xl border border-pz-line bg-pz-paper shadow-[0_24px_60px_-32px_rgba(43,37,33,0.4)]"
+        >
+          <div class="border-b border-pz-line bg-pz-cream px-5 py-3">
+            <span
+              class="text-xs font-semibold uppercase tracking-[0.16em] text-pz-ink-soft"
+              >Connect Parenza</span
+            >
+          </div>
+          <div class="space-y-5 px-5 py-6">
+            <div>
+              <p class="text-xs text-pz-ink-mute">Endpoint</p>
+              <p
+                class="mt-1.5 rounded-lg border border-pz-line bg-pz-cream px-3 py-2.5 font-mono text-xs text-pz-ink"
+              >
+                https://mcp.parenza.ai
+              </p>
+            </div>
+            <div>
+              <p class="text-xs text-pz-ink-mute">Works with</p>
+              <div class="mt-2 flex flex-wrap gap-2">
+                {
+                  ["Claude", "ChatGPT", "Claude Code", "Cursor"].map((c) => (
+                    <span class="rounded-full border border-pz-line-strong px-3 py-1 text-xs font-medium text-pz-ink-soft">
+                      {c}
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+            <div class="border-t border-pz-line pt-5">
+              <p class="text-sm leading-relaxed text-pz-ink-soft">
+                You sign in once in your browser to authorize the connection.
+                Nothing is shared with an assistant you haven't connected.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-3 text-center text-xs text-pz-ink-mute">
+          Connection panel as it appears in the app. Endpoint shown is the
+          production address for design partners.
+        </p>
+
+        <div class="mt-10 rounded-2xl border border-pz-line bg-pz-cream p-6">
+          <p
+            class="text-xs font-semibold uppercase tracking-[0.16em] text-pz-ink-soft"
+          >
+            What you can then ask, anywhere
+          </p>
+          <ul class="mt-4 space-y-3 text-sm leading-relaxed text-pz-ink-soft">
+            {
+              [
+                "How much did she actually take over the last 24 hours?",
+                "We're travelling next week — what changes about the routine?",
+                "What did we decide about the vitamin D dose, and why?",
+                "Summarize the last two weeks for the six-week check.",
+              ].map((q) => (
+                <li class="flex gap-3">
+                  <span
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-pz-sage"
+                    aria-hidden="true"
+                  />
+                  <span>&ldquo;{q}&rdquo;</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

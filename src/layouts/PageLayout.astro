@@ -1,0 +1,68 @@
+---
+/**
+ * Inner pages (Trust, About, Privacy, Terms): one column of prose under a
+ * serif heading, with the site chrome around it.
+ */
+import BaseLayout from "./BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { breadcrumbLd } from "../lib/jsonld";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  heading: string;
+  subhead?: string;
+  updated?: string;
+}
+
+const { title, description, path, heading, subhead, updated } = Astro.props;
+
+const jsonLd = [
+  breadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: heading, path },
+  ]),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  jsonLd={jsonLd}
+>
+  <Nav />
+  <main id="main" class="mx-auto max-w-3xl px-6 pb-24 pt-32 md:pt-40">
+    <h1
+      class="font-heading text-4xl font-semibold leading-[1.1] md:text-5xl"
+    >
+      {heading}
+    </h1>
+    {
+      subhead && (
+        <p class="mt-5 text-lg leading-relaxed text-pz-ink-soft">{subhead}</p>
+      )
+    }
+    {
+      updated && (
+        <p class="mt-4 text-sm text-pz-ink-mute">Last updated {updated}</p>
+      )
+    }
+
+    <div class="mt-12 space-y-10 text-base leading-relaxed text-pz-ink-soft">
+      <slot />
+    </div>
+
+    <div class="mt-16 border-t border-pz-line pt-8">
+      <a
+        href="/"
+        class="text-sm text-pz-ink-mute transition-colors hover:text-pz-ink"
+        >&larr; Back to home</a
+      >
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,28 @@
+# dependencies
+/node_modules
+
+# astro build output
+/dist/
+/.astro/
+# NOTE: /docs/ is the committed GitHub Pages publish dir (produced by `pnpm deploy`).
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+.pnpm-debug.log*
+
+# env files (but keep the example)
+.env*
+!.env.example
+
+# typescript
+*.tsbuildinfo
+
+# editors
+.idea
+
+# Reference screenshots of the live app — contain a real family's data.
+/app_images/

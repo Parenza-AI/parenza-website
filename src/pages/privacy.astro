@@ -1,0 +1,37 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { CONTACT_EMAIL } from "../consts";
+---
+
+<PageLayout
+  title="Privacy Policy — Parenza"
+  description="Parenza's formal privacy policy is being finalized alongside our Data Protection Impact Assessment. The Trust & Security page describes our current data handling in full."
+  path="/privacy"
+  heading="Privacy Policy"
+  subhead="In progress — and we'd rather say that than publish boilerplate we haven't stood behind."
+>
+  <section>
+    <p>
+      The formal privacy policy is being drafted alongside our Data Protection
+      Impact Assessment, and will be published before Parenza opens beyond the
+      design-partner cohort. Putting a generic template here in the meantime
+      would tell you less than the truth does.
+    </p>
+    <p class="mt-4">
+      What we actually collect, where it lives, what happens when you connect
+      your own AI assistant, and how to have your data deleted are all described
+      in plain language on the{" "}
+      <a href="/trust" class="text-pz-clay-strong underline underline-offset-2"
+        >Trust &amp; Security</a
+      >{" "}page. That page reflects current practice, not aspiration.
+    </p>
+    <p class="mt-4">
+      Design partners receive the data-handling terms that apply to them directly
+      before onboarding. Questions in the meantime:{" "}
+      <a
+        href={`mailto:${CONTACT_EMAIL}`}
+        class="text-pz-clay-strong underline underline-offset-2">{CONTACT_EMAIL}</a
+      >.
+    </p>
+  </section>
+</PageLayout>

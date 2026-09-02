@@ -1,0 +1,215 @@
+---
+import PhoneFrame from "./PhoneFrame.astro";
+import AppChrome from "./AppChrome.astro";
+import { ROUTINES, KNOWLEDGE_DOCS } from "../data";
+
+/** Icon-tile tint per routine, mirroring the accents used in the app. */
+const ACCENT: Record<string, string> = {
+  info: "bg-[#1e2b3d] text-[#7aa2d8]",
+  danger: "bg-[#3a2020] text-[#d98a80]",
+  warning: "bg-[#3a2e18] text-[#d9a95c]",
+  purple: "bg-[#2b2340] text-[#a98cd9]",
+  green: "bg-[#1f3025] text-[#7fb08c]",
+  pink: "bg-[#3a2030] text-[#d98ab4]",
+};
+---
+
+<section id="product" class="px-6 py-20 lg:py-28">
+  <div class="mx-auto max-w-6xl">
+    <div class="max-w-2xl">
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.2em] text-pz-clay-strong"
+      >
+        Inside the app
+      </p>
+      <h2
+        class="mt-4 font-heading text-3xl font-semibold leading-tight md:text-4xl"
+      >
+        Logging is the input, not the point.
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed text-pz-ink-soft">
+        Two surfaces do the work. Routines capture what happened, one thumb at a
+        time. The knowledge base holds everything that doesn't fit in a log —
+        who's in the family, how you've decided to do things, and why.
+      </p>
+    </div>
+
+    <div class="mt-16 space-y-20 lg:mt-20 lg:space-y-28">
+      <!-- Routines -->
+      <div
+        data-reveal
+        class="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-20"
+      >
+        <div class="flex w-full justify-center lg:flex-1">
+        <PhoneFrame label="Parenza routines screen: sleeping, feeding, diaper, pumping, growth, health and a shopping list, each showing what was last recorded">
+          <AppChrome tab="Routines" subject="Mark" age="6w 3d">
+            <div class="px-3 pb-3 pt-3">
+              <div
+                class="mb-3 flex rounded-lg border border-pz-night-line p-0.5 text-[10px]"
+              >
+                <span
+                  class="flex-1 rounded-md bg-pz-night-card py-1.5 text-center font-semibold text-pz-night-text"
+                  >Routines</span
+                >
+                <span class="flex-1 py-1.5 text-center text-pz-night-mute"
+                  >Calendar</span
+                >
+                <span class="flex-1 py-1.5 text-center text-pz-night-mute"
+                  >Stats</span
+                >
+              </div>
+
+              <ul class="space-y-1.5">
+                {
+                  ROUTINES.map((r) => (
+                    <li class="flex items-center gap-2.5 rounded-lg border border-pz-night-line bg-pz-night-card px-2.5 py-2">
+                      <span
+                        class:list={[
+                          "h-7 w-7 shrink-0 rounded-md",
+                          ACCENT[r.accent],
+                        ]}
+                        aria-hidden="true"
+                      />
+                      <span class="min-w-0 flex-1">
+                        <span class="flex items-center gap-1.5">
+                          <span class="truncate text-[11px] font-semibold text-pz-night-text">
+                            {r.name}
+                          </span>
+                          <span class="shrink-0 rounded bg-pz-night px-1 py-px text-[8px] text-pz-night-mute">
+                            {r.kind}
+                          </span>
+                        </span>
+                        <span class="block truncate text-[9px] text-pz-night-mute">
+                          {r.meta}
+                        </span>
+                      </span>
+                      <span
+                        class="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#2d4a7a] text-[11px] font-semibold text-white"
+                        aria-hidden="true"
+                      >
+                        +
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </AppChrome>
+        </PhoneFrame>
+        </div>
+
+        <div class="max-w-lg lg:flex-1">
+          <h3 class="font-heading text-xl font-semibold text-pz-ink">
+            One thumb, in the dark
+          </h3>
+          <p class="mt-3 text-base leading-relaxed text-pz-ink-soft">
+            Feeds, sleep, nappies, pumping, growth and health entries, each with
+            the fields that routine actually needs — bottle type and volume,
+            duration, weight and length. Every row shows what was last recorded,
+            because that's the question you're asking at 3am.
+          </p>
+          <p class="mt-3 text-base leading-relaxed text-pz-ink-soft">
+            The six built for a newborn are a starting point, not the ceiling.
+            Routines come in three shapes — a moment, a timed stretch, a to-do —
+            and you build your own on top of them, which is how a shopping list
+            ends up in the same record as a growth chart.
+          </p>
+        </div>
+      </div>
+
+      <!-- Knowledge -->
+      <div
+        data-reveal
+        class="flex flex-col items-center gap-10 lg:flex-row-reverse lg:items-center lg:gap-20"
+      >
+        <div class="flex w-full justify-center lg:flex-1">
+        <PhoneFrame label="Parenza knowledge screen: family profile, current status, milestones, decision log and other documents in folders, each marked published or draft">
+          <AppChrome tab="Knowledge" subject="Mark" age="6w 3d">
+            <div class="px-3 pb-3 pt-3">
+              <p
+                class="mb-2.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-pz-night-mute"
+              >
+                Documentation
+              </p>
+              <ul class="space-y-1.5">
+                {
+                  KNOWLEDGE_DOCS.map((d) => (
+                    <li class="flex items-center gap-2 rounded-lg border border-pz-night-line bg-pz-night-card px-2.5 py-2">
+                      <span class="min-w-0 flex-1">
+                        <span class="block text-[8px] uppercase tracking-[0.14em] text-pz-night-mute">
+                          {d.folder}
+                        </span>
+                        <span class="block truncate text-[11px] text-pz-night-text">
+                          {d.title}
+                        </span>
+                      </span>
+                      <span
+                        class:list={[
+                          "shrink-0 rounded px-1.5 py-0.5 text-[8px] font-semibold",
+                          d.status === "Published"
+                            ? "bg-[#1f3025] text-[#7fb08c]"
+                            : "bg-[#3a2e18] text-[#d9a95c]",
+                        ]}
+                      >
+                        {d.status}
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </AppChrome>
+        </PhoneFrame>
+        </div>
+
+        <div class="max-w-lg lg:flex-1">
+          <h3 class="font-heading text-xl font-semibold text-pz-ink">
+            The context a tracker throws away
+          </h3>
+          <p class="mt-3 text-base leading-relaxed text-pz-ink-soft">
+            Your family profile, a living status snapshot, the principles you've
+            agreed on as parents, milestone references, and a decision log that
+            records what you chose and why. Documents sit in folders, and can
+            stay in draft while you work them out.
+          </p>
+          <p class="mt-3 text-base leading-relaxed text-pz-ink-soft">
+            This is what the panel reads before it answers — which is the
+            difference between advice for a baby and advice for yours.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Reveal on scroll. Rows are only hidden up front when we can animate them
+  // back, so a missing observer or reduced motion never leaves a blank column.
+  const rows = document.querySelectorAll<HTMLElement>("[data-reveal]");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduced && "IntersectionObserver" in window) {
+    rows.forEach((r) => r.classList.add("reveal-init"));
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("reveal-in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0 },
+    );
+    rows.forEach((r) => io.observe(r));
+
+    // Safety net: nothing may stay hidden because the observer never fired
+    // (background tab, print, odd viewport).
+    window.setTimeout(() => {
+      rows.forEach((r) => r.classList.add("reveal-in"));
+      io.disconnect();
+    }, 3000);
+  }
+</script>

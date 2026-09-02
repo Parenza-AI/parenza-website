@@ -1,0 +1,32 @@
+---
+/**
+ * Device shell for the product screens. The screens themselves are built in
+ * markup rather than captured as images: the real app holds one family's
+ * private record, and a bitmap of it would be both unshippable and unreadable
+ * at this width.
+ */
+interface Props {
+  class?: string;
+  label: string;
+}
+const { class: className = "", label } = Astro.props;
+---
+
+<div class:list={["relative mx-auto w-[266px] sm:w-[286px]", className]}>
+  <div
+    class="rounded-[2.25rem] bg-gradient-to-b from-pz-night-line via-pz-night to-pz-night-line p-[3px] shadow-[0_30px_70px_-28px_rgba(43,37,33,0.6)]"
+  >
+    <div
+      class="relative overflow-hidden rounded-[2.05rem] bg-pz-night ring-1 ring-inset ring-white/5"
+      role="img"
+      aria-label={label}
+    >
+      <div
+        aria-hidden="true"
+        class="absolute left-1/2 top-2 z-20 h-[16px] w-[58px] -translate-x-1/2 rounded-full bg-black/80"
+      >
+      </div>
+      <slot />
+    </div>
+  </div>
+</div>

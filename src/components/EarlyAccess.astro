@@ -1,0 +1,216 @@
+---
+import { CONTACT_EMAIL, PARENZA_API_BASE } from "../consts";
+import { CHILD_AGE_OPTIONS, DESIGN_PARTNER_BENEFITS } from "../data";
+---
+
+<section
+  id="early-access"
+  class="border-t border-pz-line bg-pz-sand px-6 py-20 lg:py-28"
+  data-api={PARENZA_API_BASE}
+>
+  <div class="mx-auto max-w-3xl">
+    <div class="max-w-2xl">
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.2em] text-pz-clay-strong"
+      >
+        Early access
+      </p>
+      <h2
+        class="mt-4 font-heading text-3xl font-semibold leading-tight md:text-4xl"
+      >
+        Join the design-partner cohort.
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed text-pz-ink-soft">
+        Parenza is pre-launch. We're taking on a small number of families we can
+        work with closely — the kind who will tell us when the synthesis is
+        wrong. Tell us about yours.
+      </p>
+    </div>
+
+    <ul class="mt-10 space-y-3">
+      {
+        DESIGN_PARTNER_BENEFITS.map((benefit) => (
+          <li class="rounded-xl border border-pz-line bg-pz-paper px-5 py-4">
+            <p class="font-heading text-base font-semibold text-pz-ink">
+              {benefit.title}
+            </p>
+            <p class="mt-1.5 text-sm leading-relaxed text-pz-ink-soft">
+              {benefit.body}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <form id="ea-form" class="mt-10 space-y-5">
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label
+            for="ea-name"
+            class="block text-sm font-medium text-pz-ink">Your name</label
+          >
+          <input
+            id="ea-name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+            class="mt-2 h-12 w-full rounded-lg border border-pz-line-strong bg-pz-paper px-4 text-base text-pz-ink outline-none transition-colors placeholder:text-pz-ink-mute focus:border-pz-clay-strong"
+          />
+        </div>
+        <div>
+          <label for="ea-email" class="block text-sm font-medium text-pz-ink"
+            >Email</label
+          >
+          <input
+            id="ea-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            class="mt-2 h-12 w-full rounded-lg border border-pz-line-strong bg-pz-paper px-4 text-base text-pz-ink outline-none transition-colors placeholder:text-pz-ink-mute focus:border-pz-clay-strong"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="ea-age" class="block text-sm font-medium text-pz-ink"
+          >Child's age <span class="text-pz-ink-mute">(optional)</span></label
+        >
+        <select
+          id="ea-age"
+          name="childAge"
+          class="mt-2 h-12 w-full rounded-lg border border-pz-line-strong bg-pz-paper px-4 text-base text-pz-ink outline-none transition-colors focus:border-pz-clay-strong"
+        >
+          <option value="">Prefer not to say</option>
+          {CHILD_AGE_OPTIONS.map((age) => <option value={age}>{age}</option>)}
+        </select>
+      </div>
+
+      <div>
+        <label for="ea-why" class="block text-sm font-medium text-pz-ink"
+          >What made you click? <span class="text-pz-ink-mute">(optional)</span></label
+        >
+        <textarea
+          id="ea-why"
+          name="why"
+          rows="4"
+          placeholder="The decision you're stuck on, what you're using now, or what you'd want this to answer."
+          class="mt-2 w-full rounded-lg border border-pz-line-strong bg-pz-paper p-4 text-base leading-relaxed text-pz-ink outline-none transition-colors placeholder:text-pz-ink-mute focus:border-pz-clay-strong"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="inline-flex h-13 w-full items-center justify-center rounded-full bg-pz-clay-strong px-8 text-base font-semibold text-white transition-colors hover:bg-pz-clay-strong-hover disabled:opacity-60 sm:w-auto"
+        >Request early access</button
+      >
+
+      <p class="text-sm text-pz-ink-mute">
+        We'll reply personally. No billing, no account created, and we don't add
+        you to a marketing list.
+      </p>
+    </form>
+
+    <p id="ea-error" hidden class="mt-4 text-sm text-pz-ink" role="alert">
+      That didn't go through. Please try again, or email{" "}
+      <a
+        class="text-pz-clay-strong underline underline-offset-2"
+        href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a
+      >.
+    </p>
+
+    <div
+      id="ea-done"
+      hidden
+      class="mt-10 rounded-2xl border border-pz-sage bg-pz-sage-wash p-8"
+      role="status"
+      aria-live="polite"
+    >
+      <p class="font-heading text-xl font-semibold text-pz-sage-strong">
+        Request received.
+      </p>
+      <p class="mt-2 text-base leading-relaxed text-pz-ink-soft">
+        We read every one of these ourselves and reply within a few days. If
+        we're not a fit for your stage yet, we'll say that rather than leave you
+        on a list.
+      </p>
+    </div>
+
+    <noscript>
+      <p class="mt-6 text-base text-pz-ink-soft">
+        This form needs JavaScript. Email{" "}
+        <a
+          class="text-pz-clay-strong underline underline-offset-2"
+          href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a
+        >{" "}with your child's age and what you'd want Parenza to answer, and
+        we'll take it from there.
+      </p>
+    </noscript>
+  </div>
+</section>
+
+<script>
+  const section = document.getElementById("early-access");
+  if (section) {
+    const apiBase = (section.dataset.api || "").replace(/\/$/, "");
+    const form = document.getElementById("ea-form") as HTMLFormElement | null;
+    const done = document.getElementById("ea-done");
+    const error = document.getElementById("ea-error");
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector("button[type=submit]") as HTMLButtonElement | null;
+      if (error) error.hidden = true;
+
+      const data = new FormData(form);
+      const name = String(data.get("name") || "").trim();
+      const email = String(data.get("email") || "").trim();
+      const childAge = String(data.get("childAge") || "").trim();
+      const why = String(data.get("why") || "").trim();
+
+      if (!apiBase) {
+        if (error) error.hidden = false;
+        return;
+      }
+
+      // The application lands in the Ship platform's signup review queue.
+      // That endpoint carries a fixed shape, so the two Parenza-specific
+      // answers ride along in `teamSize`, which the backend stores verbatim as
+      // the signup's free-text intent. `company` names the record in the
+      // reviewer's queue.
+      const intent = [
+        "Parenza design partner",
+        childAge ? `child: ${childAge}` : null,
+        why || null,
+      ]
+        .filter(Boolean)
+        .join(" · ");
+
+      if (btn) btn.disabled = true;
+      try {
+        const res = await fetch(`${apiBase}/v1/waitlist`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            name,
+            company: `Parenza — ${name || email}`,
+            teamSize: intent,
+          }),
+        });
+        // 409 means this email is already registered — for the applicant that
+        // is the same outcome as a fresh submission, so don't surface an error.
+        if (!res.ok && res.status !== 409) throw new Error(String(res.status));
+      } catch {
+        if (btn) btn.disabled = false;
+        if (error) error.hidden = false;
+        return;
+      }
+
+      form.hidden = true;
+      if (done) done.hidden = false;
+      done?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }
+</script>

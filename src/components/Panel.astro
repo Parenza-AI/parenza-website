@@ -1,0 +1,58 @@
+---
+import { SPECIALISTS } from "../data";
+---
+
+<section
+  id="panel"
+  class="border-y border-pz-line bg-pz-sand px-6 py-20 lg:py-28"
+>
+  <div class="mx-auto max-w-6xl">
+    <div class="max-w-2xl">
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.2em] text-pz-clay-strong"
+      >
+        The panel
+      </p>
+      <h2
+        class="mt-4 font-heading text-3xl font-semibold leading-tight md:text-4xl"
+      >
+        Ten specialists and one editor.
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed text-pz-ink-soft">
+        Each specialist has a written remit, a set of sources it works from, and
+        a stated limit — what it won't do, and when it should hand you to a
+        professional. The Chief of Staff decides who to ask, reconciles them when
+        they disagree, and gives you one answer.
+      </p>
+    </div>
+
+    <ul class="mt-14 grid gap-px overflow-hidden rounded-2xl border border-pz-line bg-pz-line sm:grid-cols-2 lg:grid-cols-3">
+      {
+        SPECIALISTS.map((s) => (
+          <li class="bg-pz-paper p-6">
+            <h3 class="font-heading text-lg font-semibold text-pz-ink">
+              {s.name}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-pz-ink-soft">{s.body}</p>
+          </li>
+        ))
+      }
+      <li class="flex flex-col justify-center bg-pz-clay-wash p-6 sm:col-span-2">
+        <h3 class="font-heading text-lg font-semibold text-pz-ink">
+          Chief of Staff
+        </h3>
+        <p class="mt-2 text-sm leading-relaxed text-pz-ink-soft">
+          Routes the question, reads your family context first, and returns the
+          synthesis: what to do, who informed it, and what to record as a
+          decision.
+        </p>
+      </li>
+    </ul>
+
+    <p class="mt-8 max-w-3xl text-sm leading-relaxed text-pz-ink-mute">
+      Specialists summarize established guidance — NHS, NICE and the Lullaby
+      Trust for UK families, with other national guidance noted where it differs.
+      They are not clinicians, and they say so when a question needs one.
+    </p>
+  </div>
+</section>

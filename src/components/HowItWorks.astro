@@ -1,0 +1,43 @@
+---
+import { HOW_IT_WORKS } from "../data";
+---
+
+<section id="how-it-works" class="px-6 py-20 lg:py-28">
+  <div class="mx-auto max-w-6xl">
+    <div class="max-w-2xl">
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.2em] text-pz-clay-strong"
+      >
+        How it works
+      </p>
+      <h2
+        class="mt-4 font-heading text-3xl font-semibold leading-tight md:text-4xl"
+      >
+        Four steps, and only the first one is work.
+      </h2>
+    </div>
+
+    <ol class="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-2">
+      {
+        HOW_IT_WORKS.map((item) => (
+          <li data-reveal class="flex gap-6">
+            <span
+              class="font-heading text-2xl font-semibold text-pz-clay"
+              aria-hidden="true"
+            >
+              {item.step}
+            </span>
+            <div>
+              <h3 class="font-heading text-xl font-semibold text-pz-ink">
+                {item.title}
+              </h3>
+              <p class="mt-3 text-base leading-relaxed text-pz-ink-soft">
+                {item.body}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

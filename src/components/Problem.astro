@@ -1,0 +1,33 @@
+---
+import { PROBLEM_POINTS } from "../data";
+---
+
+<section id="problem" class="border-y border-pz-line bg-pz-sand px-6 py-20 lg:py-28">
+  <div class="mx-auto max-w-6xl">
+    <div class="max-w-2xl">
+      <h2 class="font-heading text-3xl font-semibold leading-tight md:text-4xl">
+        The advice isn't scarce. The synthesis is.
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed text-pz-ink-soft">
+        You can find an answer to any parenting question in ten seconds. What you
+        can't find is the answer that accounts for your child, your history, and
+        the four other decisions it interacts with.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2">
+      {
+        PROBLEM_POINTS.map((point) => (
+          <div class="border-t border-pz-line-strong pt-5">
+            <h3 class="font-heading text-lg font-semibold text-pz-ink">
+              {point.title}
+            </h3>
+            <p class="mt-2.5 text-base leading-relaxed text-pz-ink-soft">
+              {point.body}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

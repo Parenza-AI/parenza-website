@@ -1,0 +1,45 @@
+---
+import { TRUST_TEASER } from "../data";
+---
+
+<section id="trust" class="px-6 py-20 lg:py-28">
+  <div class="mx-auto max-w-6xl">
+    <div
+      class="rounded-3xl border border-pz-line bg-pz-paper px-6 py-12 sm:px-12 lg:px-16"
+    >
+      <div class="max-w-2xl">
+        <p
+          class="text-xs font-semibold uppercase tracking-[0.2em] text-pz-clay-strong"
+        >
+          Trust
+        </p>
+        <h2
+          class="mt-4 font-heading text-3xl font-semibold leading-tight md:text-4xl"
+        >
+          This is your child's health record. We write about it that way.
+        </h2>
+      </div>
+
+      <div class="mt-12 grid gap-x-12 gap-y-9 md:grid-cols-3">
+        {
+          TRUST_TEASER.map((item) => (
+            <div class="border-t border-pz-line-strong pt-5">
+              <h3 class="font-heading text-lg font-semibold text-pz-ink">
+                {item.title}
+              </h3>
+              <p class="mt-2.5 text-base leading-relaxed text-pz-ink-soft">
+                {item.body}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <a
+        href="/trust"
+        class="mt-10 inline-flex h-12 items-center justify-center rounded-full border border-pz-line-strong px-7 text-base font-medium text-pz-ink transition-colors hover:border-pz-ink-mute hover:bg-pz-sand"
+        >Read Trust &amp; Security</a
+      >
+    </div>
+  </div>
+</section>

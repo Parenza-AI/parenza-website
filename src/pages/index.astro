@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EarlyAccessBanner from "../components/EarlyAccessBanner.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Problem from "../components/Problem.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import Panel from "../components/Panel.astro";
+import ProductTour from "../components/ProductTour.astro";
+import Capture from "../components/Capture.astro";
+import Mcp from "../components/Mcp.astro";
+import TrustTeaser from "../components/TrustTeaser.astro";
+import Founder from "../components/Founder.astro";
+import EarlyAccess from "../components/EarlyAccess.astro";
+import Footer from "../components/Footer.astro";
+import { organizationLd, websiteLd } from "../lib/jsonld";
+
+const jsonLd = [organizationLd(), websiteLd()];
+---
+
+<BaseLayout path="/" jsonLd={jsonLd}>
+  <EarlyAccessBanner />
+  <Nav offset />
+  <main id="main">
+    <Hero />
+    <Problem />
+    <HowItWorks />
+    <Panel />
+    <ProductTour />
+    <Capture />
+    <Mcp />
+    <TrustTeaser />
+    <Founder />
+    <EarlyAccess />
+  </main>
+  <Footer />
+</BaseLayout>

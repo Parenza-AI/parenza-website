@@ -1,0 +1,139 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { CONTACT_EMAIL, FACTS, FOUNDER } from "../consts";
+
+const H2 = "font-heading text-xl font-semibold text-pz-ink";
+---
+
+<PageLayout
+  title="Why Parenza — the story behind it"
+  description="Parenza started as a structured decision system built for one family's first child by a fintech engineer who works with AI daily and has been through SOC 2, ISO 27001 and DORA audits. Here's what it was, and what it became."
+  path="/about"
+  heading="Why Parenza"
+  subhead="It started as a system built for one child, not as a product idea looking for a market."
+>
+  <section>
+    <p>
+      Before our first child was born, I did what I do at work: I wrote things
+      down. Not a diary — a structure. What we'd decided and why. What the NHS
+      guidance actually said versus what the internet said it said. Which
+      questions were feeding questions, which were sleep questions, and which
+      only looked like one and were really the other.
+    </p>
+    <p class="mt-4">
+      Then the baby arrived, and the structure earned its keep. Every night we
+      logged feeds and sleep. Every hard call — the reflux question, the vitamin
+      D dosage where UK and Russian guidance disagree, when to start the nursery
+      waitlist — went into a decision log with the reasoning attached. Within
+      weeks there were{" "}
+      <strong class="font-semibold text-pz-ink"
+        >{FACTS.routineEntries} logged entries</strong
+      >{" "}and{" "}
+      <strong class="font-semibold text-pz-ink">{FACTS.knowledgeDocs} documents</strong>
+      {" "}of family context behind them.
+    </p>
+  </section>
+
+  <section>
+    <h2 class={H2}>Who I am, and why it shows in the product</h2>
+    <p class="mt-3">
+      I'm {FOUNDER.name} — {FOUNDER.role}, and before that Revolut, Deutsche Bank
+      and a fintech I took from zero to launch as CTO. Fifteen years of building
+      systems where being approximately right is the same as being wrong, plus a
+      master's in computer and information systems security. More at{" "}
+      <a
+        href={FOUNDER.site}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-pz-clay-strong underline underline-offset-2">batiaev.com</a
+      >.
+    </p>
+    <p class="mt-3">Three things from that work ended up inside Parenza.</p>
+    <p class="mt-4">
+      <strong class="font-semibold text-pz-ink">I work with AI all day.</strong>{" "}
+      Not as a novelty — as the tool I reason with. Which is why Parenza was
+      never going to be a walled app with a chatbot bolted on. If the assistant
+      you already use can read your family's actual record, that's worth more
+      than another icon on your phone. That's what the MCP connection is for.
+    </p>
+    <p class="mt-4">
+      <strong class="font-semibold text-pz-ink"
+        >I've been through the audits from the inside.</strong
+      >{" "}
+      SOC 2, ISO 27001, DORA — in businesses where a regulator asks for evidence
+      and "we intend to" is not an answer. That experience is why the{" "}
+      <a href="/trust" class="text-pz-clay-strong underline underline-offset-2"
+        >trust page</a
+      >{" "}reads the way it does: control by control, with honest statuses, and
+      no badge we haven't earned. Data governance for a child's health record
+      deserves at least the seriousness a bank applies to a balance.
+    </p>
+    <p class="mt-4">
+      <strong class="font-semibold text-pz-ink">I validate before I act.</strong>{" "}
+      In risk systems you learn quickly that a confident number from an unchecked
+      source is the most dangerous thing on the screen. Parenting advice has
+      exactly that problem, at scale, aimed at exhausted people. So the
+      specialists here name what they're working from, flag where national
+      guidance diverges, and say plainly when a question needs a clinician rather
+      than an answer.
+    </p>
+  </section>
+
+  <section>
+    <h2 class={H2}>The part that actually worked</h2>
+    <p class="mt-3">
+      The logging wasn't the valuable bit. The valuable bit was pointing an AI
+      assistant at all of it and asking a real question — and getting an answer
+      that knew this child's history instead of an average child's. Then
+      splitting that into {FACTS.specialists} specialists with distinct remits,
+      each with its own sources and its own stated limits, and putting a Chief of
+      Staff above them to route questions and reconcile disagreements.
+    </p>
+    <p class="mt-3">
+      That's not a metaphor for how Parenza works. It is how it works, because
+      it's what has been running on our own family since {FACTS.since} — before
+      any of it became a product.
+    </p>
+  </section>
+
+  <section>
+    <h2 class={H2}>Why it isn't a tracker</h2>
+    <p class="mt-3">
+      Trackers are built around the log. You put data in and get charts back, and
+      the charts don't help at 3am, because at 3am you don't have a data question
+      — you have a decision. Parenza is built around the decision. The log exists
+      to make the decision better.
+    </p>
+  </section>
+
+  <section>
+    <h2 class={H2}>Who it's for</h2>
+    <p class="mt-3">
+      Parents who want the reasoning, not just the reassurance — people who are
+      comfortable being told "the guidance says X, your history says Y, here's
+      the trade-off" and making the call themselves. If what you want is a
+      soothing voice telling you it's all fine, there are gentler products than
+      this one.
+    </p>
+  </section>
+
+  <section>
+    <h2 class={H2}>Where it is now</h2>
+    <p class="mt-3">
+      Pre-launch, with a small design-partner cohort. No billing, no public
+      signup, and no claims about scale we haven't reached. If this is how you'd
+      want to make these decisions, tell us about your family on the{" "}
+      <a href="/#early-access" class="text-pz-clay-strong underline underline-offset-2"
+        >early-access form</a
+      >, or email{" "}
+      <a
+        href={`mailto:${CONTACT_EMAIL}`}
+        class="text-pz-clay-strong underline underline-offset-2">{CONTACT_EMAIL}</a
+      >.
+    </p>
+    <p class="mt-6 text-sm text-pz-ink-mute">
+      Employers are named as professional background only. Parenza is an
+      independent project, not affiliated with or endorsed by any of them.
+    </p>
+  </section>
+</PageLayout>

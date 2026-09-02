@@ -1,0 +1,130 @@
+---
+import { NAV_LINKS } from "../consts";
+
+interface Props {
+  /** Homepage sits under the early-access banner; inner pages don't. */
+  offset?: boolean;
+}
+const { offset = false } = Astro.props;
+---
+
+<nav
+  id="site-nav"
+  data-scrolled="false"
+  class:list={[
+    "fixed inset-x-0 z-50 bg-transparent transition-all duration-300 data-[scrolled=true]:border-b data-[scrolled=true]:border-pz-line data-[scrolled=true]:bg-pz-cream/85 data-[scrolled=true]:backdrop-blur-lg",
+    offset ? "top-[2.5rem] sm:top-[2.75rem]" : "top-0",
+  ]}
+>
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+    <a
+      href="/"
+      class="font-heading text-2xl font-semibold tracking-tight text-pz-ink"
+      >Parenza</a
+    >
+
+    <div class="hidden items-center gap-8 lg:flex">
+      {
+        NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            class="text-sm text-pz-ink-soft transition-colors hover:text-pz-ink"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="/#early-access"
+        class="inline-flex h-10 items-center rounded-full bg-pz-clay-strong px-5 text-sm font-semibold text-white transition-colors hover:bg-pz-clay-strong-hover"
+        >Request early access</a
+      >
+    </div>
+
+    <button
+      type="button"
+      id="nav-toggle"
+      class="flex h-10 w-10 items-center justify-center lg:hidden"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="nav-mobile"
+    >
+      <span class="space-y-1.5" aria-hidden="true">
+        <span class="block h-0.5 w-6 bg-pz-ink"></span>
+        <span class="block h-0.5 w-6 bg-pz-ink"></span>
+        <span class="block h-0.5 w-6 bg-pz-ink"></span>
+      </span>
+    </button>
+  </div>
+</nav>
+
+<div
+  id="nav-mobile"
+  hidden
+  class:list={[
+    "fixed inset-x-0 z-40 border-b border-pz-line bg-pz-cream/97 px-6 pb-6 pt-4 backdrop-blur-lg lg:hidden",
+    offset ? "top-[6.5rem] sm:top-[6.75rem]" : "top-16",
+  ]}
+>
+  <div class="flex flex-col gap-4">
+    {
+      NAV_LINKS.map((link) => (
+        <a
+          href={link.href}
+          data-nav-close
+          class="text-lg text-pz-ink-soft transition-colors hover:text-pz-ink"
+        >
+          {link.label}
+        </a>
+      ))
+    }
+    <a
+      href="/#early-access"
+      data-nav-close
+      class="inline-flex h-12 items-center justify-center rounded-full bg-pz-clay-strong text-base font-semibold text-white transition-colors hover:bg-pz-clay-strong-hover"
+      >Request early access</a
+    >
+  </div>
+</div>
+
+<script>
+  const nav = document.getElementById("site-nav");
+  const toggle = document.getElementById("nav-toggle");
+  const mobile = document.getElementById("nav-mobile");
+
+  if (nav) {
+    const onScroll = () => {
+      nav.dataset.scrolled = window.scrollY > 40 ? "true" : "false";
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  if (toggle && mobile) {
+    const onOutsidePointer = (e: PointerEvent) => {
+      const target = e.target as Node | null;
+      if (!target) return;
+      if (mobile.contains(target) || toggle.contains(target)) return;
+      setOpen(false);
+    };
+    const onKeydown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    const setOpen = (open: boolean) => {
+      mobile.hidden = !open;
+      toggle.setAttribute("aria-expanded", String(open));
+      if (open) {
+        document.addEventListener("pointerdown", onOutsidePointer);
+        document.addEventListener("keydown", onKeydown);
+      } else {
+        document.removeEventListener("pointerdown", onOutsidePointer);
+        document.removeEventListener("keydown", onKeydown);
+      }
+    };
+
+    toggle.addEventListener("click", () => setOpen(mobile.hidden));
+    mobile
+      .querySelectorAll("[data-nav-close]")
+      .forEach((el) => el.addEventListener("click", () => setOpen(false)));
+  }
+</script>

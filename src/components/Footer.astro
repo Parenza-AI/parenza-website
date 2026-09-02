@@ -1,0 +1,75 @@
+---
+import { CONTACT_EMAIL, SHIP_URL, SOCIALS } from "../consts";
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-pz-line bg-pz-sand px-6 py-14">
+  <div class="mx-auto max-w-6xl">
+    <div class="flex flex-col gap-10 md:flex-row md:justify-between">
+      <div class="max-w-sm">
+        <p class="font-heading text-2xl font-semibold text-pz-ink">Parenza</p>
+        <p class="mt-3 text-sm leading-relaxed text-pz-ink-soft">
+          Parenting decision support — a structured family record, a panel of
+          specialists, and one synthesized answer.
+        </p>
+        <p class="mt-4 text-sm text-pz-ink-soft">
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            class="text-pz-clay-strong underline underline-offset-2">{CONTACT_EMAIL}</a
+          >
+        </p>
+      </div>
+
+      <nav
+        class="grid grid-cols-2 gap-x-12 gap-y-3 text-sm sm:gap-x-20"
+        aria-label="Footer"
+      >
+        <a href="/trust" class="text-pz-ink-soft transition-colors hover:text-pz-ink"
+          >Trust &amp; Security</a
+        >
+        <a href="/about" class="text-pz-ink-soft transition-colors hover:text-pz-ink"
+          >Why Parenza</a
+        >
+        <a href="/privacy" class="text-pz-ink-soft transition-colors hover:text-pz-ink"
+          >Privacy Policy</a
+        >
+        <a href="/terms" class="text-pz-ink-soft transition-colors hover:text-pz-ink"
+          >Terms</a
+        >
+        <a
+          href="/#early-access"
+          class="text-pz-ink-soft transition-colors hover:text-pz-ink">Early access</a
+        >
+        <a
+          href={SOCIALS.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-pz-ink-soft transition-colors hover:text-pz-ink">LinkedIn</a
+        >
+      </nav>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col gap-3 border-t border-pz-line-strong pt-6 text-xs text-pz-ink-mute sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>&copy; {year} Parenza. Pre-launch — no public signup or billing yet.</p>
+      <p>
+        Runs on{" "}
+        <a
+          href={SHIP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline underline-offset-2 transition-colors hover:text-pz-ink"
+          >SHIP</a
+        >{" "}platform infrastructure.
+      </p>
+    </div>
+
+    <p class="mt-6 max-w-3xl text-xs leading-relaxed text-pz-ink-mute">
+      Parenza is not a medical device and does not provide medical, clinical, or
+      regulated financial advice. It summarizes established guidance and helps you
+      prepare decisions — it does not replace your GP, midwife, health visitor, or
+      a qualified adviser. In an emergency, contact your local emergency services.
+    </p>
+  </div>
+</footer>

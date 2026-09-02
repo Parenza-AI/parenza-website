@@ -1,0 +1,39 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { CONTACT_EMAIL } from "../consts";
+---
+
+<PageLayout
+  title="Terms — Parenza"
+  description="Parenza's terms of service are being finalized ahead of general availability. Design partners are onboarded under a written agreement."
+  path="/terms"
+  heading="Terms"
+  subhead="In progress — Parenza is pre-launch, with no public signup and no billing."
+>
+  <section>
+    <p>
+      There is no self-serve signup and no paid plan yet, so there is no
+      subscription contract to present. Terms of service will be published before
+      Parenza opens to the public.
+    </p>
+    <p class="mt-4">
+      Design partners are onboarded under a written agreement covering data
+      handling, confidentiality, and what each side commits to during the pilot.
+      You'll see it before you share anything about your family.
+    </p>
+    <p class="mt-4">
+      One thing that will not change between now and then: Parenza is not a
+      medical device and does not provide medical, clinical, or regulated
+      financial advice. It summarizes established guidance and helps you prepare
+      decisions. It does not replace your GP, midwife, health visitor, or a
+      qualified adviser, and it is not for emergencies.
+    </p>
+    <p class="mt-4">
+      Questions:{" "}
+      <a
+        href={`mailto:${CONTACT_EMAIL}`}
+        class="text-pz-clay-strong underline underline-offset-2">{CONTACT_EMAIL}</a
+      >.
+    </p>
+  </section>
+</PageLayout>
